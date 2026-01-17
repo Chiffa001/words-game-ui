@@ -1,0 +1,5 @@
+@import 'tailwindcss';
+
+body {
+  @apply bg-[#0D0D17] text-white select-none;
+}
