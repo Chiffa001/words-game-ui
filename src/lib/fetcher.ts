@@ -46,6 +46,31 @@ class Fetcher {
       return response.json();
     });
   }
+
+  async put<R, B>({ path, body, headers }: RequestParams<B>): Promise<R> {
+    return fetch(`${this.baseUrl}${path}`, {
+      method: 'PUT',
+      headers: { ...this.defaultHeaders, ...headers },
+      body: JSON.stringify(body)
+    }).then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    });
+  }
+
+  async delete<R>({ path, headers }: RequestParams<void>): Promise<R> {
+    return fetch(`${this.baseUrl}${path}`, {
+      method: 'DELETE',
+      headers: { ...this.defaultHeaders, ...headers }
+    }).then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    });
+  }
 }
 
 export const fetcher = new Fetcher();

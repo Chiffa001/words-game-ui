@@ -9,6 +9,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "prepare": "husky install",
+    "test": "vitest",
+    "test:run": "vitest run",
     "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json",
     "format": "prettier --write .",
     "lint": "prettier --check . && eslint ."
@@ -16,7 +18,8 @@
   "lint-staged": {
     "*.{js,ts,svelte}": [
       "eslint --fix",
-      "prettier --write"
+      "prettier --write",
+      "vitest run"
     ],
     "*.{json,md,css,html}": [
       "prettier --write"
@@ -49,6 +52,7 @@
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.1",
     "vite": "^7.1.7",
-    "vite-plugin-mkcert": "^1.17.9"
+    "vite-plugin-mkcert": "^1.17.9",
+    "vitest": "^3.2.4"
   }
 }
