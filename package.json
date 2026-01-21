@@ -19,7 +19,7 @@
     "*.{js,ts,svelte}": [
       "eslint --fix",
       "prettier --write",
-      "vitest run"
+      "vitest related --passWithNoTests"
     ],
     "*.{json,md,css,html}": [
       "prettier --write"

@@ -1,13 +1,11 @@
 <script lang="ts">
-  import { type ComponentProps } from 'svelte';
+  import { type NavTabId, tabs } from '@/constants/nav-items';
+  import { activeNavTabId } from '@/stores/nav';
   import { NavBar } from '@chiffa001/tg-svelte-ui';
-  import RocketIcon from '@/icons/rocket-icon.svelte';
 
-  const tabs: ComponentProps<typeof NavBar>['tabs'] = [
-    { id: 'one', text: 'one', icon: RocketIcon },
-    { id: 'two', text: 'two', icon: RocketIcon },
-    { id: 'three', text: 'three', icon: RocketIcon }
-  ];
+  const setActiveItemId = (id: string) => {
+    activeNavTabId.set(id as NavTabId);
+  };
 </script>
 
-<NavBar {tabs} activeId="two" />
+<NavBar {tabs} activeId={$activeNavTabId} {setActiveItemId} />
